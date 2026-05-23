@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swiggy Jarvis - Premium AI Food Concierge</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Mobile View Toggle Bar -->
+<div class="mobile-tabs" id="mobileTabs">
+    <button type="button" class="mobile-tab-btn active" id="tabBtnChat">
+        <span>💬</span> Jarvis AI Chat
+    </button>
+    <button type="button" class="mobile-tab-btn" id="tabBtnPortal">
+        <span>🍔</span> Swiggy Portal
+        <span class="mobile-tab-badge" id="portalTabBadge"></span>
+    </button>
+</div>
+
+<!-- Main Grid Wrapper -->
+<div class="app-wrapper view-chat" id="appWrapper">
+
+    <!-- Left Pane: AI Chat Column -->
+    <aside class="chat-column" id="chatPane">
+        <header class="chat-header">
+            <div class="header-title-area">
+                <div class="header-brand">
+                    <h1>Swiggy Jarvis</h1>
+                    <span class="status-dot"></span>
+                    <span class="header-tag">Concierge</span>
+                </div>
+                <p>Your AI-powered gourmet ordering companion</p>
+            </div>
+            
+            <div class="chat-header-actions">
+                <button type="button" class="header-clear-btn" id="clearBtn">
+                    Clear Memory
+                </button>
+            </div>
+        </header>
+
+        <!-- Quick Suggestions Panel -->
+        <div class="quick-actions" id="quickActions">
+            <button type="button" onclick="quickPrompt('Chicken biryani')">
+                🍗 Biryani
+            </button>
+            <button type="button" onclick="quickPrompt('Healthy dinner')">
+                🥗 Healthy Bowls
+            </button>
+            <button type="button" onclick="quickPrompt('Pizza')">
+                🍕 Pizza Party
+            </button>
+            <button type="button" onclick="quickPrompt('Vegetarian lunch')">
+                🥬 Veg Special
+            </button>
+        </div>
+
+        <!-- Chat Conversations list -->
+        <div id="chatMessages" class="chat-messages">
+            <div class="message bot">
+                <span class="sender-tag">Jarvis</span>
+                <div class="bubble">
+                    Namaste! I'm <b>Jarvis</b>, your custom food concierge. 🍽️
+                    <br><br>
+                    I can help you search, discover, customize, and place orders directly from <b>Swiggy</b>. What are you craving today?
+                </div>
+                <span class="timestamp" id="initTimestamp"></span>
+            </div>
+        </div>
+
+        <!-- Typing Animation -->
+        <div id="typingIndicator" class="typing hidden">
+            <div class="bubble">
+                <div class="thinking-text">Jarvis is thinking</div>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+
+        <!-- Bottom Input Panel -->
+        <div class="chat-input-container">
+            <!-- Simulated Voice Waves when active -->
+            <div class="voice-wave-container" id="voiceWaveContainer">
+                <span></span><span></span><span></span><span></span><span></span>
+                <p>Listening to your gourmet command...</p>
+            </div>
+
+            <div class="input-row">
+                <input
+                    type="text"
+                    id="messageInput"
+                    placeholder="Ask for dishes, budgets, diet choices..."
+                    autocomplete="off"
+                />
+                <button type="button" class="mic-btn" id="voiceMicBtn" title="Speak to Jarvis">
+                    🎙️
+                </button>
+                <button type="button" class="send-btn" id="sendBtn">
+                    Send ➔
+                </button>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Right Pane: Interactive Swiggy Portal Column -->
+    <main class="portal-column" id="portalPane">
+        <header class="portal-header">
+            <div class="portal-address">
+                <span class="address-label">Delivery Location</span>
+                <div class="address-dropdown" id="addressDropdown">
+                    Home - Madhapur, Hyderabad
+                </div>
+            </div>
+            
+            <div class="portal-header-meta">
+                <a href="/dashboard" class="dashboard-link" id="dashboardLink">
+                    📊 Analytics Dashboard
+                </a>
+            </div>
+        </header>
+
+        <!-- Live Sorting & Filters Pill Panel -->
+        <section class="portal-filters" id="portalFilters">
+            <button type="button" class="filter-pill" id="filterVeg" data-filter="veg">
+                🟢 Veg Only
+            </button>
+            <button type="button" class="filter-pill" id="filterRating" data-filter="rating">
+                ⭐ Top Rated (4.3+)
+            </button>
+            <button type="button" class="filter-pill" id="filterLowPrice" data-filter="low-price">
+                💰 Price: Low to High
+            </button>
+            <button type="button" class="filter-pill" id="filterHealthy" data-filter="healthy">
+                🥑 Healthy Bowls
+            </button>
+            <button type="button" class="filter-pill" id="filterBestseller" data-filter="bestseller">
+                🔥 Bestsellers
+            </button>
+        </section>
+
+        <!-- Visual Workspace -->
+        <section class="portal-workspace" id="portalWorkspace">
+            
+            <!-- Dynamic Content (rendered via script.js) -->
+            <div id="portalDynamicContent" style="height: 100%;">
+                <!-- Default empty state showing on load -->
+                <div class="empty-portal-state" id="emptyPortalState">
+                    <div class="visual-icon">🌍</div>
+                    <h2>Your Swiggy Portal is ready</h2>
+                    <p>Tell Jarvis what you'd like to eat, or click suggestions on the left, and watch gourmet options appear here instantly!</p>
+                </div>
+            </div>
+
+            <!-- Confetti Particle Handoff for completed orders -->
+            <div class="order-success-confetti hidden" id="orderConfetti"></div>
+        </section>
+    </main>
+
+    <!-- Floating Checkout Bottom Sheet -->
+    <section class="cart-sheet" id="cartSheet">
+        <header class="cart-sheet-header">
+            <h3>🛒 Gourmet Cart</h3>
+            <button type="button" class="cart-close-btn" id="cartCloseBtn">×</button>
+        </header>
+        
+        <div class="cart-items-list" id="cartItemsList">
+            <!-- Dynamically populated via JS -->
+        </div>
+
+        <div class="cart-bill-summary">
+            <div class="bill-row">
+                <span>Subtotal</span>
+                <span id="billSubtotal">₹0</span>
+            </div>
+            <div class="bill-row">
+                <span>Delivery Partner Fee</span>
+                <span id="billDelivery">₹0</span>
+            </div>
+            <div class="bill-row">
+                <span>GST & Restaurant Taxes (5%)</span>
+                <span id="billTax">₹0</span>
+            </div>
+            <div class="bill-row grand-total">
+                <span>To Pay</span>
+                <span id="billGrandTotal">₹0</span>
+            </div>
+        </div>
+
+        <button type="button" class="cart-checkout-btn" id="cartCheckoutBtn">
+            Confirm and Place Order ➔
+        </button>
+    </section>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

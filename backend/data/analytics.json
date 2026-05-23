@@ -1,0 +1,26 @@
+{
+    "total_orders": 23,
+    "most_ordered_food": {
+        "Farmhouse Pizza": 1,
+        "Healthy Veg Bowl": 1,
+        "Chicken Biryani": 2,
+        "Peri Peri Chicken Bowl": 3,
+        "Veg Sub": 2,
+        "Royal Chicken Biryani": 1,
+        "Mutton Biryani": 1,
+        "Cheese Burst Pizza": 2,
+        "Mini Chicken Biryani": 5,
+        "Veg Dum Biryani": 2,
+        "Protein Rice Bowl": 1,
+        "Mini Veg Biryani": 1,
+        "Chicken Biryani x1, Veg Biryani x1": 1
+    },
+    "favorite_restaurants": {
+        "Domino's Pizza": 3,
+        "The Bowl Company": 5,
+        "Paradise Biryani": 5,
+        "Subway": 2,
+        "Behrouz Biryani": 8
+    },
+    "avg_order_value": 270.2608695652174
+}

@@ -1,0 +1,27 @@
+[
+    {
+        "timestamp": "2026-05-22T22:05:34.345386",
+        "role": "user",
+        "message": "less quantity food"
+    },
+    {
+        "timestamp": "2026-05-22T22:05:42.567215",
+        "role": "user",
+        "message": "Most expensive item"
+    },
+    {
+        "timestamp": "2026-05-22T22:05:43.061522",
+        "role": "user",
+        "message": "Hi Jarvis"
+    },
+    {
+        "timestamp": "2026-05-22T22:05:47.954832",
+        "role": "user",
+        "message": "Most expensive and cheapest items"
+    },
+    {
+        "timestamp": "2026-05-22T22:06:01.700240",
+        "role": "user",
+        "message": "Most expensive item"
+    }
+]

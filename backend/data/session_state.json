@@ -1,0 +1,28 @@
+{
+    "selected_address": {
+        "id": "addr_001",
+        "name": "Home",
+        "full_address": "Madhapur, Hyderabad"
+    },
+    "restaurant_results": [],
+    "selected_restaurant": null,
+    "menu_items": [],
+    "pending_order": null,
+    "last_order": {
+        "restaurant": "Paradise Biryani",
+        "item": "Chicken Biryani x1, Veg Biryani x1",
+        "price": 578
+    },
+    "last_query": "Cheapest non veg dish under 250",
+    "last_intent": {
+        "dish": null,
+        "budget": 250,
+        "veg": false,
+        "healthy": false,
+        "spicy": null,
+        "quick": false,
+        "restaurant_intent": false,
+        "sort": "asc",
+        "limit": 1
+    }
+}
